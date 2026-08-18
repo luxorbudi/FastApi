@@ -1,0 +1,23 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fast-api-hpa
+spec:
+  # Indica a quién va a vigilar (a tu Deployment de la API)
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fast-api-deployment
+  
+  # Límites elásticos de réplicas
+  minReplicas: 2
+  maxReplicas: 10
+  
+  # La regla del gatillo (Trigger)
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50  # Si el promedio de CPU pasa del 50%, ¡escala!

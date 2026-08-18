@@ -1,0 +1,17 @@
+# Entornos virtuales locales
+venv/
+.venv/
+env/
+
+# Archivos de caché de Python
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configuración local e historial
+.git/
+.gitignore
+.env
+.vscode/
+.idea/
